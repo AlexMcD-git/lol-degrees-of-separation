@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get '/puuid/:summoner_id', to: 'riot_api_fetch#puuid_from_summoner'
 end
