@@ -69,6 +69,7 @@ GEM
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
+    cgi (0.3.6)
     concurrent-ruby (1.1.10)
     crass (1.0.6)
     debug (1.6.2)
@@ -80,6 +81,8 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
+    erb (4.0.2)
+      cgi (>= 0.3.3)
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -176,6 +179,7 @@ DEPENDENCIES
   bootsnap
   debug
   dotenv-rails
+  erb
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)
