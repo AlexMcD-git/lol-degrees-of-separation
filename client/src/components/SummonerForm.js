@@ -89,7 +89,7 @@ function SummonerForm() {
                       rankedInfo=[]
                       playerListPuuid.clear()
                       if (bestPlayer.tier ==="CHALLENGER"){
-                        console.log("HOLY FUCK IT WORKED")
+                        console.log("Wow it worked!")
                         return
                       }
                       else{
