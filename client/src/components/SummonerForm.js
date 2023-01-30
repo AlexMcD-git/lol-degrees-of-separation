@@ -66,7 +66,7 @@ function SummonerForm() {
                 console.log(matchData)
                 if (matchData.length === 10) {
                   matchData.forEach(match => {
-                    match.metadata.participants.forEach(participant => playerListPuuid.add(participant));
+                    match.forEach(participant => playerListPuuid.add(participant));
                   });
                   let playerListPuuidArray = [...playerListPuuid];
     
@@ -83,7 +83,9 @@ function SummonerForm() {
                         return a.leaguePoints - b.leaguePoints;
                       });
                       console.log(rankedInfo)
-                      let bestPlayer=rankedInfo[rankedInfo.length-1];
+                      let bestPlayer=rankedInfo[-1];
+                      
+
                       setPlayerPath(current => [...current, `${bestPlayer.summonerName} (${bestPlayer.tier} ${bestPlayer.rank})`])
                       matchData=[]
                       rankedInfo=[]
@@ -107,13 +109,15 @@ function SummonerForm() {
                         console.log(rankedInfo);
                       }
                         rankedInfoIndex++;
-                        setTimeout(processPlayer, 1000); // delay for 1 second before processing the next player
+                        processPlayer()
+                        // setTimeout(processPlayer, 1000); // delay for 1 second before processing the next player
                       });
                   }
                   processPlayer();
                 }
                 index++;
-                setTimeout(processMatch, 1000); // delay for 1 second before processing the next match
+                processMatch();
+                // setTimeout(processMatch, 1000); // delay for 1 second before processing the next match
               });
           }
           processMatch();
@@ -135,7 +139,7 @@ function SummonerForm() {
           <input type='text' value={summonerName} onChange={(e) => setSummonerName(e.target.value)}></input>
           <button type='submit'>Submit</button>
       </form>
-      <h1>{playerPath[0]} is {playerPath.length-1} degrees of separation from Challenger</h1>
+      {playerPath.length>1?<h1>{playerPath[0]} is {playerPath.length-1} degrees of separation from Challenger</h1>:null}
       <span>{summonerPuuid}</span>
       <br/>
       <br/>
