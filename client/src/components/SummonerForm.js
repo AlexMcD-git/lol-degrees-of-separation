@@ -19,36 +19,7 @@ function SummonerForm() {
     }
     const tiers = ['IRON', 'BRONZE', 'SILVER', 'GOLD','PLATINUM', 'DIAMOND', 'MASTER','GRANDMASTER','CHALLENGER'];
     const ranks = ['IV', 'III', 'II', 'I'];
-    //this gets 429s from the rate limit
-    // function findChallenger(puuid){
-    //   fetch(`/matches/${puuid}`)
-    //     .then(r=>r.json())
-    //     .then(matches=>{matches.forEach(match=>{
-    //       fetch(`/match/${match}`)
-    //       .then(r=>r.json())
-    //       .then(data=>{
-    //         matchData.push(data)
-    //         console.log(matchData)
-    //         if (matchData.length === 10){
-    //           //thing to do after all 10 match lookups are done
-    //           matchData.forEach(match =>{
-    //             match.metadata.participants.forEach(participant => playerListPuuid.add(participant))
-    //           })
-    //           let playerListPuuidArray = [...playerListPuuid]
 
-    //           playerListPuuidArray.forEach(puuid=>{
-    //             fetch(`/rankedInfo/${puuid}`)
-    //             .then(r=>r.json())
-    //             .then(data=>{
-    //               data[0].queueType==="RANKED_SOLO_5x5"?rankedInfo.push(data[0]):rankedInfo.push(data[1])
-    //               console.log(rankedInfo)
-    //             })
-    //           })
-    //         }
-    //       })
-    //     })
-    //   });
-    // }
     function findChallenger(puuid) {
       fetch(`/matches/${puuid}`)
         .then(r => r.json())

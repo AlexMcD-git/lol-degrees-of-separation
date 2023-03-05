@@ -44,11 +44,19 @@ def matches_from_puuid(puuid):
     allSoloQueueInfo=[]
     for name in names:
         try:
-            summoner=cass.Summoner(name=name, region="NA").league_entries[Queue.ranked_solo_fives]
-            thisPerson=json.loads(summoner.to_json())
-            allSoloQueueInfo.append(thisPerson)            
+            summoner=cass.Summoner(name=name, region="NA")
+            # league = summoner.ranks[cass.Queue.ranked_solo_fives]
+            # print(league.divison, league.tier)
+            entries = []
+            test= [summoner.league_entries[cass.Queue.ranked_solo_fives]]
+            print(test.to_json())
+            #if queue is solo 5v5 add to dict
+            entries.append(test)
+            
+            print(test)
         except Exception as e:
             print(e)
-    rankedTiers = ['IRON', 'BRONZE', 'SILVER', 'GOLD','PLATINUM', 'DIAMOND', 'MASTER','GRANDMASTER','CHALLENGER'];
-    rankedRanks = ['IV', 'III', 'II', 'I'];
-    allSoloQueueInfo.sort(key=lambda x: (rankedTiers.index(x.tier), rankedRanks.index(x.rank), x.leaguePoints))
+    return allSoloQueueInfo
+    # rankedTiers = ['IRON', 'BRONZE', 'SILVER', 'GOLD','PLATINUM', 'DIAMOND', 'MASTER','GRANDMASTER','CHALLENGER']
+    # rankedRanks = ['IV', 'III', 'II', 'I']
+    # allSoloQueueInfo.sort(key=lambda x: (rankedTiers.index(x['tier']), rankedRanks.index(x.rank), x.leaguePoints))
