@@ -18,12 +18,12 @@ print(kalturi.id)
 def hello_world():
     return "<p>Hello, World!</p>"
 
-@app.route("/intial-lookup/<name>")
+@app.route("/initial-lookup/<name>")
 def puuid_from_name(name):
     summoner = cass.get_summoner(name=name, region="NA")
     summonerData=json.loads(summoner.league_entries[Queue.ranked_solo_fives].to_json())
     summonerData['puuid']=summoner.puuid
-    return summonerData
+    return json.dumps(summonerData)
 
 @app.route("/best-from-recent-games/<puuid>")
 def matches_from_puuid(puuid):
@@ -56,4 +56,4 @@ def matches_from_puuid(puuid):
     bestPlayer=allSoloFivesInfo[0]
     #saves looking up puuid for all players
     bestPlayer['puuid']= cass.get_summoner(id=bestPlayer['summonerId'], region="NA").puuid
-    return bestPlayer
+    return json.dumps(bestPlayer)
